@@ -1,0 +1,182 @@
+import './Bootstrap_project.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Container, Form, Nav, Navbar, Carousel, Card } from 'react-bootstrap';
+
+let t = 0;
+let temp = 1;
+
+
+function MyNav() {
+  return <>
+    <Navbar expand="lg" className="bg-body-tertiary" style={{marginTop:"15px"}}>
+      <Container fluid>
+        <Navbar.Brand href="#"><img src="https://th.bing.com/th/id/R.050780d3d269b1d95332d6d9ca59047d?rik=mQL24%2bQssOhM0A&riu=http%3a%2f%2fcjss.enewspapr.com%2fgujrat%2fimages%2fGujaratsam.png&ehk=NkLUopyJhjBTQlIsJeN9spAqM%2b1nexDQ49ngDOydvVM%3d&risl=&pid=ImgRaw&r=0" alt="" id="MyNav_logo" /></Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            <Nav.Link href="#action1" className='MyNav_list' >Home</Nav.Link>
+            <Nav.Link href="#action2" className='MyNav_list'>Ipl</Nav.Link>
+            <Nav.Link href="#action3" className='MyNav_list'>Technology</Nav.Link>
+            <Nav.Link href="#action4" className='MyNav_list'>Finance</Nav.Link>
+            <Nav.Link href="#action5" className='MyNav_list'>Politics</Nav.Link>
+          </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+
+    </Navbar>
+    <hr /><br />
+  </>
+}
+
+function MyImageSlider() {
+  return <>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+
+      <Carousel data-bs-theme="dark" id="Myimg">
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://images.pexels.com/photos/206359/pexels-photo-206359.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h5>First slide label</h5>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://images.pexels.com/photos/620337/pexels-photo-620337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Second slide"
+          />
+          <Carousel.Caption>
+            <h5>Second slide label</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Third slide"
+          />
+          <Carousel.Caption>
+            <h5>Third slide label</h5>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    </div>
+  </>
+}
+
+function Mycard() {
+  let Site_link = `https://source.unsplash.com/random/300*300?sig=${temp++}`;
+  return <>
+    <Card style={{ maxWidth: '350px', margin: '14px' }}>
+      <Card.Img variant="top" src={Site_link} style={{ height: '17rem', objectFit: 'cover' }} />
+      <Card.Body>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </Card.Text>
+        <Button variant="primary">Go somewhere</Button>
+      </Card.Body>
+    </Card>
+  </>
+}
+
+function Myfotter() {
+  return <>
+    <div className="footer_main">
+      <div className="footer_box">
+        <div className="footer_title">About Company :</div>
+        <div className="footer_content">About Us <br /><br />Store Locator <br /> <br />Blogs <br /> <br />Careers <br /><br />
+        </div>
+      </div>
+      <div className="footer_box">
+        <div className="footer_title">Online Shopping :</div>
+        <div className="footer_content">Men's Watches <br /><br />Women's Watches <br /><br /> Smart Watches <br />
+          <br />Watch Offers<br /><br />
+        </div>
+      </div>
+      <div className="footer_box">
+        <div className="footer_title">Useful Links :</div><br />
+        <div className="footer_content">Corporate Gifting<br /><br />Track Order <br /> <br />Terms and Condition
+          <br /><br />Cancellation Return & Refund <br /><br />Privacy Poilicy <br /> <br />Shipping and Dispatch Policy
+        </div>
+      </div>
+      <div id="footer_box">
+        <div className="footer_title_temp">Social Media :</div>
+        <div className="footer_content_temp">
+          <div id="x" className="footer_symbolls"></div>
+          <div id="fb" className="footer_symbolls"></div>
+          <div id="insta" className="footer_symbolls"></div>
+          <div id="yt" className="footer_symbolls"></div>
+          <div id="linkdn" className="footer_symbolls"></div>
+        </div>
+      </div>
+    </div>
+  </>
+}
+
+function Bootstrap_project() {
+
+  return <>
+    <MyNav></MyNav>
+    <MyImageSlider></MyImageSlider>
+    <br />
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ margin: '15px' }}>----------</div>
+      <h1>News</h1>
+      <div style={{ margin: '15px' }}>----------</div>
+    </div><br />
+    <div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row' }}>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+      <Mycard></Mycard>
+    </div><br />
+    <Myfotter />
+  </>
+}
+
+export default App;
