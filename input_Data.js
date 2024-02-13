@@ -37,8 +37,10 @@ function App() {
 
   return (<>
     <span>Email : </span>
+    
     <input type="text" onChange={updateEmail} /> 
     <br />
+    
 
     <span>Password : </span>
     <input type={pass_permission ? "text" : "password"} 
