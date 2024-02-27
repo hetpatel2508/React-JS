@@ -20,7 +20,7 @@ function App() {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        return response.json();
+        return response.json();   //will get data converted above with stringify like [{"name":"John","age":30},{"name":"Alice","age":25}] like in json form
       })
       .then((result) => {
         console.log("successful");
