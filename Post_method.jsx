@@ -13,7 +13,8 @@ function App() {
         Accept: "application/json",
         "content-type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data),     //it will convert const data = [{ name: 'John', age: 30 }, { name: 'Alice', age: 25 }]
+                                      //to =>    Output: [{"name":"John","age":30},{"name":"Alice","age":25}] like in json form
     })
       .then((response) => {
         if (!response.ok) {
