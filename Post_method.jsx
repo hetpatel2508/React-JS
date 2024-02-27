@@ -14,12 +14,20 @@ function App() {
         "content-type": "application/json",
       },
       body: JSON.stringify(data),
-    }).then((response)=>{
-      return response.json();
-    }).then((result)=>{
-      console.log("successful")
-      console.log(result)
     })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((result) => {
+        console.log("successful");
+        console.log(result);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   return (
