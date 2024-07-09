@@ -15,6 +15,6 @@ const { isIdle, data: projects } = useQuery(
     retry : 6  //will retry failing requests 6 times before showing the final error message
         //in react-query it retry to fetch 3 times if error comes but after 3rd time it return dedicated error message
 
-    
+    staleTime: 20000 //for 20000 = 20 seconds data is saved and will not perform fetch operation 
   }
 )
