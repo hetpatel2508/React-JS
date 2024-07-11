@@ -21,6 +21,7 @@ const Optimistic = () => {
             const firstELe = `<div class="bg-gray-100 w-[70%] px-4 py-2 rounded-md border relative border-gray-300 text-black opacity-40">${txt}</div>`;
             postRef.current.innerHTML = firstELe + postRef.current.innerHTML;
             const response = await axios.post('http://localhost:3000/posts', { title });
+            // const response = await axios.post('http://localhost:3000/posts/abcdefc', { title });
             return response.data; // Assuming your API returns data you want to use
         },
         {
