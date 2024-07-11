@@ -51,34 +51,48 @@ const InfiniteScrolling = () => {
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {DATA.map((product, i) => (
                         <div key={i} className="group relative">
-                                        <Link to={`/products/${product.id}`}>
+                            <Link to={`/products/${product.id}`} target='_blank'>
 
-                            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                <img
-                                    src={product.thumbnail}
-                                    alt={product.title}
-                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                />
-                            </div>
-                            <div className="mt-4 flex justify-between">
-                                <div>
-                                    <h3 className="text-sm text-gray-700">
-                                            {product.title}
-                                    </h3>
-                                    <p className="mt-1 text-sm text-gray-500">{product.category}</p>
+                                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                                    <img
+                                        src={product.thumbnail}
+                                        alt={product.title}
+                                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                    />
                                 </div>
-                                <p className="text-sm font-medium text-gray-900">{product.price}</p>
-                            </div>
+                                <div className="mt-4 flex justify-between">
+                                    <div>
+                                        <h3 className="text-sm text-gray-700">
+                                            {product.title}
+                                        </h3>
+                                        <p className="mt-1 text-sm text-gray-500">{product.category}</p>
+                                    </div>
+                                    <p className="text-sm font-medium text-gray-900">{product.price}</p>
+                                </div>
                             </Link>
                         </div>
                     ))}
                 </div>
 
-                {skip >= (products?.total || 0) ? (
+                {/* {skip >= (products?.total || 0) ? (
                     <div className="mt-6">No more products</div>
                 ) : (
                     <div className="mt-6">
                         <button ref={butttonRef} onClick={handleClick}>Load More</button>
+                    </div>
+                )} */}
+
+                {/* <div className='w-[280px] cursor-pointer mt-16 ml-[38%] py-2 rounded-lg text-center bg-gray-200' onClick={()=>{if(!skip >= (products?.total || 0) ){handleClick()} }}>
+                    {skip >= (products?.total || 0) ? "No more products !" : "Show More" }
+                </div> */}
+
+                {skip >= (products?.total || 0) ? (
+                    <div className="mt-10 w-[280px] py-2 ml-[38%] rounded-lg text-center bg-gray-200">No more products</div>
+                ) : (
+                    <div className="mt-10">
+                        <button className='w-[280px] cursor-pointer py-2 ml-[38%] rounded-lg text-center bg-gray-200' onClick={handleClick}>
+                            {isLoading ? 'Loading...' : 'Show More'}
+                        </button>
                     </div>
                 )}
             </div>

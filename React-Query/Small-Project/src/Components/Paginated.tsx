@@ -180,7 +180,7 @@ const Paginated = () => {
                             name="q"
                             // value={q}
                             className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            placeholder="Search products..."
+                            placeholder={q===''?"Search products...":q}
                             onChange={debounce((e) => setQ(e.target.value), 1000)}
                             ref={inputRef}
                         />
@@ -219,7 +219,7 @@ const Paginated = () => {
                 <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {products.map((product) => (
                         <div key={product.id} className="group relative">
-                            <Link to={`/products/${product.id}`}>
+                            <Link to={`/products/${product.id}`} target='_blank'>
                                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-64">
                                     <img
                                         src={product.thumbnail}

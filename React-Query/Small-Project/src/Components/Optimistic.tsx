@@ -6,7 +6,7 @@ const Optimistic = () => {
     const [txt, setTxt] = useState('');
     const postRef = useRef(null);
 
-    const postsQuery = useQuery('posts', async () => {
+    const posts = useQuery('posts', async () => {
         const res = await fetch('http://localhost:3000/posts');
         return res.json();
     }, {
@@ -14,23 +14,24 @@ const Optimistic = () => {
         staleTime: 10000,
     });
 
-    const { data: posts } = postsQuery;
+    // const { data: posts } = postsQuery;
 
     const mutatePost = useMutation(
         async (title) => {
-            postRef.current.innerHTML += `<div class="bg-gray-100 w-[70%] px-4 py-2 rounded-md border relative border-gray-300 text-black opacity-40">${txt}</div>`;
+            const firstELe = `<div class="bg-gray-100 w-[70%] px-4 py-2 rounded-md border relative border-gray-300 text-black opacity-40">${txt}</div>`;
+            postRef.current.innerHTML = firstELe + postRef.current.innerHTML;
             const response = await axios.post('http://localhost:3000/posts', { title });
             return response.data; // Assuming your API returns data you want to use
         },
         {
             onSuccess: () => {
-                const lastEle = postRef.current.lastElementChild;
+                const lastEle = postRef.current.firstElementChild;
                 lastEle.classList.remove('opacity-40');
                 lastEle.classList.add('opacity-100');
                 setTxt('');
             },
             onError: () => {
-                const lastEle = postRef.current.lastElementChild;
+                const lastEle = postRef.current.firstElementChild;
                 lastEle.classList.remove('opacity-40');
                 lastEle.classList.add('opacity-100');
                 lastEle.classList.remove('text-black');
@@ -42,7 +43,7 @@ const Optimistic = () => {
     );
 
     const handleRetry = () => {
-        const lastEle = postRef.current.lastElementChild;
+        const lastEle = postRef.current.firstElementChild;
         postRef.current.removeChild(lastEle);
         mutatePost.mutate(txt);
     };
@@ -79,7 +80,7 @@ const Optimistic = () => {
                     </button>
                 </div>
                 <div className='mt-20 ml-[20%] flex flex-col gap-8' ref={postRef}>
-                    {posts?.map((post) => (
+                    {posts.data?.slice().reverse().map((post) => (
                         <div key={post.id} className='bg-gray-100 w-[70%] px-4 py-2 rounded-md border border-gray-300'>
                             {post.title}
                         </div>

@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-        <div>
+        <div className='selection:bg-gray-300'>
           <BrowserRouter>
           <Navbar />
             <Routes>
